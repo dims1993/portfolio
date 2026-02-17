@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* ===== HERO VISUAL SYSTEM ===== */
+
+:root {
+  --bg-main: #0f1115;
+  --text-primary: #ffffff;
+  --text-secondary: #c0c0c0;
+  --text-soft: #9ca3af;
+  --accent-blue: #2563eb;
+  --accent-hover: #1e40af;
+}
+
+/* Background base */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg-dark);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+/* Grid overlay */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* Glow effect */
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.25) 0%,
+    transparent 70%
+  );
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+/* Typography */
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.hero-tag {
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.hero-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: var(--text-soft);
+}
+
+.hero-desc {
+  margin-top: 1.5rem;
+  max-width: 650px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+/* Buttons */
+.hero-cta {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1.2rem;
+}
+
+.btn-primary {
+  background: white;
+  color: black;
+  padding: 0.85rem 1.8rem;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #e4e4e7;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Status badge */
+.status-badge {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: #a1a1aa;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(34, 197, 94, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+  }
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
