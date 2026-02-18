@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+/* Reseteo para que las secciones ocupen todo el ancho */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  text-align: left; /* Muy importante para que no centre todo por defecto */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #08090a; /* El fondo oscuro exterior de las islas */
+  color: white;
+  overflow-x: hidden;
+}
+
 /* Scroll suave para global y reset */
 
 html {
