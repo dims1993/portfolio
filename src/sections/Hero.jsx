@@ -15,7 +15,7 @@ function Hero() {
       {/* Name */}
       <h1 className="mt-4 text-6xl sm:text-7xl font-semibold tracking-tight leading-[1.05]">
         {DATA.name.split(" ")[0]} <br />
-        <em className="italic font-light text-[var(--green)]">
+        <em className="italic font-light text-[var(--accent-silver)]">
           {DATA.name.split(" ")[1]}
         </em>
       </h1>

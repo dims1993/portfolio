@@ -2,7 +2,7 @@ import React from "react";
 
 const ProjectCard = ({ project }) => {
   return (
-    <div className="group bg-zinc-900/40 border border-zinc-800/60 rounded-3xl p-4 transition-all duration-500 hover:border-[var(--green)] hover:translate-y-[-4px] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
+    <div className="group bg-zinc-900/40 border border-zinc-800/60 rounded-3xl p-4 transition-all duration-500 hover:border-[var(--accent-silver)] hover:translate-y-[-4px] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
       {/* Imagen */}
       <div className="relative aspect-video rounded-2xl overflow-hidden mb-6">
         <img
@@ -27,7 +27,7 @@ const ProjectCard = ({ project }) => {
           {project.stack?.frontend?.map((tag) => (
             <span
               key={tag}
-              className="text-[10px] font-bold px-2 py-1 bg-emerald-500/10 text-[var(--green)] border border-emerald-500/20 rounded-md"
+              className="text-[10px] font-bold px-2 py-1 bg-emerald-500/10 text-[var(--accent-silver)] border border-emerald-500/20 rounded-md"
             >
               {tag}
             </span>
@@ -35,7 +35,7 @@ const ProjectCard = ({ project }) => {
         </div>
 
         {/* Texto */}
-        <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[var(--green)] transition-colors tracking-tight">
+        <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[var(--accent-silver)] transition-colors tracking-tight">
           {project.title}
         </h3>
 
@@ -49,7 +49,7 @@ const ProjectCard = ({ project }) => {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold text-zinc-300 hover:text-white transition-colors underline decoration-[var(--green)] underline-offset-8 decoration-2"
+            className="text-sm font-semibold text-zinc-300 hover:text-white transition-colors underline decoration-[var(--accent-silver)] underline-offset-8 decoration-2"
           >
             GitHub Repo
           </a>

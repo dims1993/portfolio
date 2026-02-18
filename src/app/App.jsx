@@ -1,12 +1,14 @@
 import Layout from "./layout";
-import Hero from "../sections/Hero"; // Asegúrate de que la ruta sea correcta
-import Projects from "../sections/Projects"; // Importamos la nueva sección
+import Navbar from "../components/Navbar";
+import Hero from "../sections/Hero";
+import Projects from "../sections/Projects";
 
 function App() {
   return (
     <Layout>
+      <Navbar />
       <Hero />
-      <Projects /> {/* <--- Ahora sí aparecerán debajo del Hero */}
+      <Projects />
     </Layout>
   );
 }
