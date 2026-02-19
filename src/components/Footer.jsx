@@ -5,24 +5,11 @@ const Footer = () => {
         {/* Lado Izquierdo: Branding Minimal */}
         <div className="flex flex-col items-center md:items-start">
           <span className="text-xl font-bold tracking-tighter text-white">
-            DAVID<span className="text-[var(--accent-silver)]">MUÑOZ</span>
+            DAVID<span className="text-[var(--accent-silver)]"> MUÑOZ</span>
           </span>
           <p className="text-zinc-500 text-xs mt-2 uppercase tracking-widest">
             Fullstack Developer • 2026
           </p>
-        </div>
-
-        {/* Lado Central: Quick Links (Opcional) */}
-        <div className="flex gap-8 text-zinc-400 text-sm font-light">
-          <a href="#about" className="hover:text-white transition-colors">
-            About
-          </a>
-          <a href="#projects" className="hover:text-white transition-colors">
-            Projects
-          </a>
-          <a href="#contact" className="hover:text-white transition-colors">
-            Contact
-          </a>
         </div>
 
         {/* Lado Derecho: Social Rings */}
@@ -37,7 +24,7 @@ const Footer = () => {
             </span>
           </a>
           <a
-            href="https://github.com/tu-usuario"
+            href="https://github.com/dims1993"
             target="_blank"
             className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-[var(--accent-silver)] hover:bg-white/5 transition-all group"
           >

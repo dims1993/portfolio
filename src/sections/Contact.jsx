@@ -159,19 +159,6 @@ const Contact = () => {
             )}
           </div>
         </div>{" "}
-        {/* Cierre del Grid de 2 columnas */}
-        {/* Mini Footer */}
-        <div className="mt-20 pt-8 border-t border-white/5 flex justify-between items-center relative z-10">
-          <p className="text-zinc-600 text-[10px] uppercase tracking-widest">
-            © 2026 DM. Crafted with passion.
-          </p>
-          <a
-            href="#hero"
-            className="text-zinc-500 hover:text-white transition-colors text-xs uppercase tracking-tighter"
-          >
-            Back to top ↑
-          </a>
-        </div>
       </div>
     </section>
   );

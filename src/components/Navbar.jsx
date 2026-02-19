@@ -15,9 +15,9 @@ function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "About", href: "#hero" },
+    { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
-    { name: "Experience", href: "#experience" }, // Lo crearemos luego
+    { name: "Experience", href: "#experience" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -48,7 +48,7 @@ function Navbar() {
             </a>
           ))}
           <a
-            href="/cv.pdf" // Asegúrate de poner tu PDF en la carpeta 'public'
+            href="/cv.pdf" // Falta poner tu PDF en la carpeta 'public'
             target="_blank"
             className="px-5 py-2 rounded-full border border-[var(--accent-silver)] text-[var(--accent-silver)] text-sm font-semibold hover:bg-[var(--accent-silver)] hover:text-black transition-all duration-300"
           >
