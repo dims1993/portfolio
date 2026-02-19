@@ -4,7 +4,6 @@ const Skills = () => {
   return (
     <section id="experience" className="py-20 px-4 md:px-10">
       {" "}
-      {/* Fondo exterior más oscuro */}
       {/* GRAN CAJA CONTENEDORA */}
       <div className="max-w-7xl mx-auto relative overflow-hidden rounded-[2.5rem] md:rounded-[2.5rem] border border-white/5 bg-[#111318] py-20 px-8 md:px-16 shadow-2xl">
         {/* Fondo interno con degradado y rejilla */}
@@ -30,8 +29,8 @@ const Skills = () => {
               </span>
             </h2>
             <p className="text-zinc-400 text-lg font-light max-w-xl">
-              Mi ecosistema de desarrollo. Herramientas seleccionadas para
-              construir software escalable y estético.
+              My development ecosystem. Set of tools that I use to build
+              scalable and esthetical software.
             </p>
           </div>
 

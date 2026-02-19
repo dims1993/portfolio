@@ -128,11 +128,12 @@ body {
 
 .btn-primary {
   background: white;
-  color: black;
-  padding: 0.85rem 1.8rem;
-  border-radius: 10px;
-  font-weight: 500;
+  color: #000;
+  padding: 0.85rem 2rem;
+  border-radius: 12px; /* Más redondeado, como tus nuevas 'islas' */
+  font-weight: 600;
   transition: all 0.3s ease;
+  display: inline-block;
 }
 
 .btn-primary:hover {
@@ -141,10 +142,13 @@ body {
 }
 
 .btn-secondary {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.8rem 1.6rem;
-  border-radius: 8px;
-  transition: 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: white;
+  padding: 0.85rem 2rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
 }
 
 .btn-secondary:hover {
@@ -204,4 +208,18 @@ body {
 .fade-up {
   opacity: 0;
   animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
 }
