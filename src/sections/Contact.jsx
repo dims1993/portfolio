@@ -32,10 +32,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 px-4 md:px-10 bg-[#08090a]">
       {/* CAJA CONTENEDORA (Island Style) */}
-      <div
-        className="max-w-7xl mx-auto relative overflow-hidden rounded-[2.5rem] md:rounded-[2.5
-      rem] border border-white/5 bg-[#111318] py-16 px-8 md:px-20 shadow-2xl"
-      >
+      <div className="max-w-7xl mx-auto relative overflow-hidden rounded-[2.5rem] md:rounded-[2.5rem] border border-white/5 bg-[#111318] py-16 px-8 md:px-20 shadow-2xl">
         {/* Luz de fondo sutil */}
         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[var(--accent-silver)]/5 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16">
