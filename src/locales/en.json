@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "stack": "Stack",
+    "contact": "Contact"
+  },
+  "hero": {
+    "subtitle": "Fullstack Developer & UI Enthusiast",
+    "description": "Crafting high-performance web applications with a focus on clean code and exceptional user experience.",
+    "btn_projects": "Go to Projects",
+    "btn_contact": "Contact",
+    "availability": "Available for new projects"
+  },
+  "about": {
+    "badge": "About Me",
+    "title": "Transforming ideas into",
+    "subtitle": "digital experiences.",
+    "p1_intro": "I'm",
+    "p1_name": "David Muñoz",
+    "p1_rest": ", a developer with an analytical mind and a creative soul. My main focus is the",
+    "p1_focus": "Fullstack",
+    "p1_end": "ecosystem, where I enjoy bridging robust architectures with intuitive interfaces.",
+    "p2_intro": "My technical background allows me to tackle complex problems with scalable solutions, always keeping a critical eye on",
+    "p2_bold": "design and usability",
+    "p2_end": ". I firmly believe that code should not only work, but it should be elegant and maintainable.",
+    "p3_intro": "Currently, I am focusing on honing my skills in",
+    "p3_bold": "Python and React",
+    "p3_end": ", constantly exploring new ways to optimize workflow and the end-user experience.",
+    "location": "Location",
+    "interests": "Interests"
+  },
+  "projects": {
+    "badge": "Projects",
+    "title_main": "Work Hard, Work Smart",
+    "title_sub": "Projects with purpose create real growth",
+    "section_title": "Selected Projects",
+    "project1": {
+      "title": "Model Project One",
+      "desc": "Fullstack application built with Python and Django. Features a RESTful API, JWT authentication, and a PostgreSQL database for real-time tracking."
+    },
+    "project2": {
+      "title": "Model Project Two",
+      "desc": "A high-performance dashboard focused on data visualization. Optimized for speed and responsiveness using asynchronous JavaScript and modern CSS architectures."
+    }
+  },
+  "stack": {
+    "badge": "Tech Stack",
+    "title_main1": "Technical",
+    "title_main2": "Universe",
+    "title_sub": "My development ecosystem. Set of tools that I use to build scalable and esthetical software.",
+    "utilities": "Utilities"
+  },
+  "contact": {
+    "badge": "Contact",
+    "title_main1": "Let's build",
+    "title_main2": "something together",
+    "title_sub": "Do you have an idea? Tell me about it and let's make it real!",
+    "name_tag": "Name",
+    "message_tag": "Message",
+    "message_content": "Tell me something about your project...",
+    "error_message": "An error occurred. Please try again.",
+    "success": {
+      "title": "Message sent!",
+      "message": "Thanks for getting in touch! I will write to you as soon as possible.",
+      "reset_button": "Send another message"
+    },
+    "button": {
+      "sending": "Sending...",
+      "default": "Send the message"
+    }
+  }
+}

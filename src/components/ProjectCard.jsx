@@ -1,13 +1,16 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const ProjectCard = ({ project }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="group bg-zinc-900/40 border border-zinc-800/60 rounded-3xl p-4 transition-all duration-500 hover:border-[var(--accent-silver)] hover:translate-y-[-4px] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
       {/* Imagen */}
       <div className="relative aspect-video rounded-2xl overflow-hidden mb-6">
         <img
           src={project.image}
-          alt={project.title}
+          alt={t(`projects.${project.key}.title`)}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

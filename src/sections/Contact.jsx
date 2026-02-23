@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [status, setStatus] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,16 +41,16 @@ const Contact = () => {
           {/* COLUMNA IZQUIERDA: Texto e Info */}
           <div className="flex flex-col justify-center">
             <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[var(--accent-silver)] mb-6">
-              Contact
+              {t("contact.badge")}
             </span>
             <h2 className="text-5xl md:text-6xl font-bold tracking-tighter mb-8">
-              Let's build <br />
+              {t("contact.title_main1")} <br />
               <span className="text-zinc-500 italic font-light">
-                something together.
+                {t("contact.title_main2")}
               </span>
             </h2>
             <p className="text-zinc-400 text-lg mb-10 max-w-md font-light">
-              Do you have an idea? Tell me about it and let's make it real!
+              {t("contact.title_sub")}
             </p>
 
             <div className="space-y-6">
@@ -88,16 +90,17 @@ const Contact = () => {
                     ✓
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold">¡Message sent!</h3>
+                <h3 className="text-2xl font-bold">
+                  {t("contact.success.title")}
+                </h3>
                 <p className="text-zinc-400 text-center">
-                  Thanks to get in contact!, I will write to you as soon as
-                  posible.
+                  {t("contact.success.message")}
                 </p>
                 <button
                   onClick={() => setStatus("")}
                   className="text-sm text-[var(--accent-silver)] underline underline-offset-4 mt-4"
                 >
-                  Send another message
+                  {t("contact.success.reset_button")}
                 </button>
               </div>
             ) : (
@@ -105,7 +108,7 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">
-                      Name
+                      {t("contact.name_tag")}
                     </label>
                     <input
                       name="name"
@@ -131,13 +134,13 @@ const Contact = () => {
 
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">
-                    Message
+                    {t("contact.message_tag")}
                   </label>
                   <textarea
                     name="message"
                     required
                     rows="4"
-                    placeholder="Tell me something about your project..."
+                    placeholder={t("contact.message_content")}
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[var(--accent-silver)]/50 transition-all resize-none"
                   ></textarea>
                 </div>
@@ -147,12 +150,14 @@ const Contact = () => {
                   type="submit"
                   className="w-full py-4 bg-[var(--accent-silver)] text-black font-bold rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {status === "sending" ? "Sending..." : "Send the Message"}
+                  {status === "sending"
+                    ? t("contact.button.sending")
+                    : t("contact.button.default")}
                 </button>
 
                 {status === "error" && (
                   <p className="text-red-400 text-xs text-center mt-2">
-                    An Error ocurred. Try it again.
+                    {t("contact.error_message")}
                   </p>
                 )}
               </form>

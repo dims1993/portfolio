@@ -1,6 +1,9 @@
 import DATA from "../data/webData";
+import { useTranslation } from "react-i18next";
 
 function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section id="hero" className="hero-section">
       {/* Background effects */}
@@ -22,28 +25,28 @@ function Hero() {
 
       {/* Stack */}
       <p className="hero-subtitle fade-up" style={{ animationDelay: "0.6s" }}>
-        {DATA.subtitle}
+        {t("hero.subtitle")}
       </p>
 
       {/* Description */}
       <p className="hero-desc fade-up" style={{ animationDelay: "0.8s" }}>
-        {DATA.description}
+        {t("hero.description")}
       </p>
 
       {/* CTA */}
       <div className="hero-cta fade-up" style={{ animationDelay: "1s" }}>
         <a href="#projects" className="btn-primary">
-          Go to Projects
+          {t("hero.btn_projects")}
         </a>
         <a href="#contact" className="btn-secondary">
-          Contact
+          {t("hero.btn_contact")}
         </a>
       </div>
 
       {/* Availability */}
       <div className="status-badge fade-up" style={{ animationDelay: "1.2s" }}>
         <div className="status-dot" />
-        {DATA.availability}
+        {t("hero.availability")}
       </div>
     </section>
   );

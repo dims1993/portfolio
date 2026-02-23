@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "skills": "Competencias",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "subtitle": "Desarrollador Fullstack & Entusiasta del UI",
+    "description": "Creando aplicaciones web de alto rendimiento con foco en código limpio y una experiencia de usuario excepcional.",
+    "btn_projects": "Ver Proyectos",
+    "btn_contact": "Contacto",
+    "availability": "Disponible para nuevos proyectos"
+  },
+  "about": {
+    "badge": "Sobre mí",
+    "title": "Transformando ideas en",
+    "subtitle": "experiencias digitales.",
+    "p1_intro": "Soy",
+    "p1_name": "David Muñoz",
+    "p1_rest": ", un desarrollador con mente analítica y alma creativa. Mi enfoque principal es el ecosistema",
+    "p1_focus": "Fullstack",
+    "p1_end": ", donde disfruto conectando arquitecturas robustas con interfaces intuitivas.",
+    "p2_intro": "Mi formación técnica me permite abordar problemas complejos con soluciones escalables, manteniendo siempre un ojo crítico en el",
+    "p2_bold": "diseño y la usabilidad",
+    "p2_end": ". Creo firmemente que el código no solo debe funcionar, sino que debe ser elegante y fácil de mantener.",
+    "p3_intro": "Actualmente, me centro en perfeccionar mis habilidades en",
+    "p3_bold": "Python y React",
+    "p3_end": ", explorando constantemente nuevas formas de optimizar el flujo de trabajo y la experiencia del usuario final.",
+    "location": "Ubicación",
+    "interests": "Intereses"
+  },
+  "projects": {
+    "badge": "Proyectos",
+    "title_main": "Trabaja duro, trabaja inteligente",
+    "title_sub": "Los proyectos con propósito generan crecimiento real",
+    "section_title": "Proyectos Seleccionados",
+    "project1": {
+      "title": "Proyecto Modelo Uno",
+      "desc": "Aplicación fullstack desarrollada con Python y Django. Incluye una API RESTful, autenticación con JWT y una base de datos PostgreSQL para seguimiento en tiempo real."
+    },
+    "project2": {
+      "title": "Proyecto Modelo Dos",
+      "desc": "Panel de alto rendimiento enfocado en la visualización de datos. Optimizado para velocidad y capacidad de respuesta utilizando JavaScript asíncrono y arquitecturas modernas de CSS."
+    }
+  },
+  "stack": {
+    "badge": "Stack Tecnológico",
+    "title_main1": "Universo",
+    "title_main2": "Técnico",
+    "title_sub": "Mi ecosistema de desarrollo. Conjunto de herramientas que utilizo para construir software escalable y estéticamente cuidado.",
+    "utilities": "Utilidades"
+  },
+  "contact": {
+    "badge": "Contacto",
+    "title_main1": "Construyamos",
+    "title_main2": "algo juntos",
+    "title_sub": "¿Tienes una idea? Cuéntame sobre ella y hagámosla realidad.",
+    "name_tag": "Nombre",
+    "message_tag": "Mensaje",
+    "message_content": "Cuéntame algo sobre tu proyecto...",
+    "error_message": "Ha ocurrido un error. Porfavor inténtelo de nuevo.",
+    "success": {
+      "title": "¡Mensaje enviado!",
+      "message": "¡Gracias por contactar! Te escribiré lo antes posible.",
+      "reset_button": "Enviar otro mensaje"
+    },
+    "button": {
+      "sending": "Enviando...",
+      "default": "Enviar mensaje"
+    }
+  }
+}

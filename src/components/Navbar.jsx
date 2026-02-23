@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import DATA from "../data/webData";
+import { useTranslation } from "react-i18next"; // Paso 1: Importar el hook
 
 function Navbar() {
+  const { t, i18n } = useTranslation(); // Paso 2: Inicializar el traductor
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Efecto para cambiar el fondo al hacer scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -14,12 +14,20 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Paso 3: Usar t() para los nombres.
+  // Asegúrate de que estas claves existan en tus archivos locales (en.json y es.json)
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Experience", href: "#experience" },
-    { name: "Contact", href: "#contact" },
+    { name: t("nav.about"), href: "#about" },
+    { name: t("nav.projects"), href: "#projects" },
+    { name: t("nav.stack"), href: "#stack" },
+    { name: t("nav.contact"), href: "#contact" },
   ];
+
+  // Función para alternar idioma
+  const toggleLanguage = () => {
+    const newLang = i18n.language === "en" ? "es" : "en";
+    i18n.changeLanguage(newLang);
+  };
 
   return (
     <nav
@@ -28,7 +36,6 @@ function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        {/* Logo / Name */}
         <a
           href="#hero"
           className="text-xl font-bold tracking-tighter hover:text-[var(--accent-silver)] transition-colors"
@@ -40,15 +47,24 @@ function Navbar() {
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
-              key={link.name}
+              key={link.href} // Usamos href como key porque el name ahora cambia con el idioma
               href={link.href}
               className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
             >
               {link.name}
             </a>
           ))}
+
+          {/* Botón Switcher de Idioma */}
+          <button
+            onClick={toggleLanguage}
+            className="ml-2 px-3 py-1 rounded-md border border-white/10 text-[10px] font-bold text-zinc-400 hover:text-[var(--accent-silver)] hover:border-[var(--accent-silver)]/50 transition-all uppercase"
+          >
+            {i18n.language === "en" ? "ESP" : "ENG"}
+          </button>
+
           <a
-            href="/cv.pdf" // Falta poner tu PDF en la carpeta 'public'
+            href="/cv.pdf"
             target="_blank"
             className="px-5 py-2 rounded-full border border-[var(--accent-silver)] text-[var(--accent-silver)] text-sm font-semibold hover:bg-[var(--accent-silver)] hover:text-black transition-all duration-300"
           >
@@ -61,33 +77,16 @@ function Navbar() {
           className="md:hidden text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d={
-                isMobileMenuOpen
-                  ? "M6 18L18 6M6 6l12 12"
-                  : "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              }
-            />
-          </svg>
+          {/* ... tu SVG ... */}
         </button>
       </div>
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-zinc-900 border-b border-zinc-800 p-6 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4">
+        <div className="md:hidden absolute top-full left-0 w-full bg-zinc-900 border-b border-zinc-800 p-6 flex flex-col gap-4">
           {navLinks.map((link) => (
             <a
-              key={link.name}
+              key={link.href}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
               className="text-lg font-medium text-zinc-400"
@@ -95,6 +94,13 @@ function Navbar() {
               {link.name}
             </a>
           ))}
+          {/* Switcher en móvil */}
+          <button
+            onClick={toggleLanguage}
+            className="text-left text-lg font-medium text-[var(--accent-silver)]"
+          >
+            {i18n.language === "en" ? "Cambiar a Español" : "Switch to English"}
+          </button>
         </div>
       )}
     </nav>

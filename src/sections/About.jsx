@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 const About = () => {
+  const { t } = useTranslation();
   return (
     <section id="about" className="py-20 px-4 md:px-10 bg-[#08090a]">
       {/* CONTENEDOR TIPO ISLA */}
@@ -13,7 +16,7 @@ const About = () => {
               {/* Marco de la foto */}
               <div className="w-64 h-80 md:w-80 md:h-[450px] rounded-[3rem] overflow-hidden border border-white/10 relative z-10 bg-zinc-900">
                 <img
-                  src="/api/placeholder/400/600" // Cambia esto por tu foto real
+                  src="/api/placeholder/400/600" // Aqui va mi foto real
                   alt="David Muñoz"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out"
                 />
@@ -27,40 +30,47 @@ const About = () => {
           <div className="flex flex-col">
             {/* Etiqueta superior */}
             <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[var(--accent-silver)] mb-6">
-              About Me
+              {t("about.badge")}
             </span>
 
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-8 leading-tight">
-              Transforming ideas into <br />
+              {t("about.title")}
+              <br />
               <span className="text-zinc-500 italic font-light text-3xl md:text-4xl">
-                digital experiences.
+                {t("about.subtitle")}
               </span>
             </h2>
 
             <div className="space-y-6 text-zinc-400 text-lg font-light leading-relaxed">
+              {/* Párrafo 1 */}
               <p>
-                I'm <span className="text-white font-medium">David Muñoz</span>,
-                a developer with an analytical mind and a creative soul. My main
-                focus is the <span className="text-white">Fullstack</span>{" "}
-                ecosystem, where I enjoy bridging robust architectures with
-                intuitive interfaces.
-              </p>
-              <p>
-                My technical background allows me to tackle complex problems
-                with scalable solutions, always keeping a critical eye on
-                **design and usability**. I firmly believe that code should not
-                only work, but it should be elegant and maintainable.
-              </p>
-              <p>
-                Currently, I am focusing on honing my skills in{" "}
-                <span className="text-[var(--accent-silver)]">
-                  Python and React
+                {t("about.p1_intro")}{" "}
+                <span className="text-white font-medium">
+                  {t("about.p1_name")}
                 </span>
-                , constantly exploring new ways to optimize workflow and the
-                end-user experience.
+                {t("about.p1_rest")}{" "}
+                <span className="text-white">{t("about.p1_focus")}</span>
+                {t("about.p1_end")}
+              </p>
+
+              {/* Párrafo 2 */}
+              <p>
+                {t("about.p2_intro")}{" "}
+                <strong className="font-medium text-white">
+                  {t("about.p2_bold")}
+                </strong>
+                {t("about.p2_end")}
+              </p>
+
+              {/* Párrafo 3 */}
+              <p>
+                {t("about.p3_intro")}{" "}
+                <span className="text-[var(--accent-silver)] font-medium">
+                  {t("about.p3_bold")}
+                </span>
+                {t("about.p3_end")}
               </p>
             </div>
-
             {/* Tarjetas de información rápida */}
             <div className="grid grid-cols-2 gap-6 mt-12">
               <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5">

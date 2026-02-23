@@ -1,8 +1,10 @@
 import DATA from "../data/webData";
+import { useTranslation } from "react-i18next";
 
-const Skills = () => {
+const Stack = () => {
+  const { t } = useTranslation();
   return (
-    <section id="experience" className="py-20 px-4 md:px-10">
+    <section id="stack" className="py-20 px-4 md:px-10">
       {" "}
       {/* GRAN CAJA CONTENEDORA */}
       <div className="max-w-7xl mx-auto relative overflow-hidden rounded-[2.5rem] md:rounded-[2.5rem] border border-white/5 bg-[#111318] py-20 px-8 md:px-16 shadow-2xl">
@@ -15,22 +17,26 @@ const Skills = () => {
             backgroundSize: "50px 50px",
           }}
         ></div>
-
         {/* Luces de ambiente internas */}
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-[var(--accent-silver)]/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         {/* CONTENIDO */}
         <div className="relative z-10">
+          {/* Título de la sección estilo "About" */}
+          <div className="mb-16">
+            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[var(--accent-silver)] mb-4 block">
+              {t("stack.badge")}
+            </span>
+          </div>
           <div className="mb-20">
             <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
-              Technical{" "}
+              {t("stack.title_main1")}{" "}
               <span className="text-[var(--accent-silver)] opacity-80">
-                Universe
+                {t("stack.title_main2")}
               </span>
             </h2>
             <p className="text-zinc-400 text-lg font-light max-w-xl">
-              My development ecosystem. Set of tools that I use to build
-              scalable and esthetical software.
+              {t("stack.title_sub")}
             </p>
           </div>
 
@@ -76,7 +82,7 @@ const Skills = () => {
             {/* UTILITIES */}
             <div className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-8">
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-zinc-600 pt-2">
-                Utilities
+                {t("stack.utilities")}
               </span>
               <div className="flex flex-wrap gap-x-10 gap-y-4">
                 {DATA.skills.tools.map((tool) => (
@@ -96,4 +102,4 @@ const Skills = () => {
   );
 };
 
-export default Skills;
+export default Stack;
