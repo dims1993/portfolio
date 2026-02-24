@@ -5,7 +5,7 @@ const About = () => {
   return (
     <section id="about" className="py-20 px-4 md:px-10 bg-[#08090a]">
       {/* CONTENEDOR TIPO ISLA */}
-      <div className="max-w-7xl mx-auto relative overflow-hidden rounded-[2.5rem] md:rounded-[2.5rem] border border-white/5 bg-[#111318] py-20 px-8 md:px-16 shadow-2xl">
+      <div className="max-w-7xl mx-auto relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] border border-white/5 bg-[#111318] py-12 px-6 md:py-20 md:px-16 shadow-2xl">
         {/* Luz de ambiente de fondo */}
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-[var(--accent-silver)]/5 rounded-full blur-[100px] pointer-events-none"></div>
 
@@ -14,7 +14,7 @@ const About = () => {
           <div className="relative flex justify-center lg:justify-start">
             <div className="relative group">
               {/* Marco de la foto */}
-              <div className="w-64 h-80 md:w-80 md:h-[450px] rounded-[3rem] overflow-hidden border border-white/10 relative z-10 bg-zinc-900">
+              <div className="w-full max-w-[280px] h-80 md:w-80 md:h-[450px] rounded-[3rem] overflow-hidden border border-white/10 relative z-10 bg-zinc-900">
                 <img
                   src="profile.png" // mi foto presentacion
                   alt="David Muñoz"

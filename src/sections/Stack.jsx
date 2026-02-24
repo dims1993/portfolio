@@ -4,21 +4,11 @@ import { useTranslation } from "react-i18next";
 const Stack = () => {
   const { t } = useTranslation();
   return (
-    <section id="stack" className="py-20 px-4 md:px-10">
+    <section id="stack" className="py-20 px-4 md:px-10 bg-[#08090a]">
       {" "}
       {/* GRAN CAJA CONTENEDORA */}
       <div className="max-w-7xl mx-auto relative overflow-hidden rounded-[2.5rem] md:rounded-[2.5rem] border border-white/5 bg-[#111318] py-20 px-8 md:px-16 shadow-2xl">
-        {/* Fondo interno con degradado y rejilla */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,#1c1f26_0%,#111318_100%)]"></div>
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
-            backgroundSize: "50px 50px",
-          }}
-        ></div>
-        {/* Luces de ambiente internas */}
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[var(--accent-silver)]/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[var(--accent-silver)]/5 rounded-full blur-[100px] pointer-events-none"></div>
 
         {/* CONTENIDO */}
         <div className="relative z-10">

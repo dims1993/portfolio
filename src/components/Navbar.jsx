@@ -31,14 +31,17 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "py-4 bg-black/80 backdrop-blur-md" : "py-6 bg-transparent"
+      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
+        isScrolled || isMobileMenuOpen
+          ? "py-4 bg-black/90 backdrop-blur-xl"
+          : "py-6 bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        {/* Logo */}
         <a
           href="#hero"
-          className="text-xl font-bold tracking-tighter hover:text-[var(--accent-silver)] transition-colors"
+          className="text-2xl font-black tracking-tighter hover:text-[var(--accent-silver)] transition-colors z-[110]"
         >
           DM<span className="text-[var(--accent-silver)]">.</span>
         </a>
@@ -49,7 +52,7 @@ function Navbar() {
             <a
               key={link.href} // Usamos href como key porque el name ahora cambia con el idioma
               href={link.href}
-              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
+              className="text-xs uppercase tracking-widest font-medium text-zinc-400 hover:text-white transition-colors"
             >
               {link.name}
             </a>
@@ -58,7 +61,7 @@ function Navbar() {
           {/* Botón Switcher de Idioma */}
           <button
             onClick={toggleLanguage}
-            className="ml-2 px-3 py-1 rounded-md border border-white/10 text-[10px] font-bold text-zinc-400 hover:text-[var(--accent-silver)] hover:border-[var(--accent-silver)]/50 transition-all uppercase"
+            className="px-3 py-1 rounded-md border border-white/10 text-[10px] font-bold text-zinc-400 hover:text-[var(--accent-silver)] transition-all uppercase"
           >
             {i18n.language === "en" ? "ESP" : "ENG"}
           </button>
@@ -74,37 +77,67 @@ function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-white"
+          className="md:hidden z-[110] p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Menu"
         >
-          {/* ... tu SVG ... */}
+          <div className="w-6 h-5 relative flex flex-col justify-between">
+            <span
+              className={`w-full h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}
+            ></span>
+            <span
+              className={`w-full h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? "opacity-0" : ""}`}
+            ></span>
+            <span
+              className={`w-full h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}
+            ></span>
+          </div>
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-zinc-900 border-b border-zinc-800 p-6 flex flex-col gap-4">
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`fixed inset-0 bg-black transition-all duration-500 ease-in-out md:hidden ${
+          isMobileMenuOpen
+            ? "opacity-100 visible"
+            : "opacity-0 invisible shadow-none"
+        }`}
+        style={{ top: "0", height: "100vh" }}
+      >
+        <div className="flex flex-col items-center justify-center h-full gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-lg font-medium text-zinc-400"
+              className="text-3xl font-bold tracking-tighter text-white hover:text-[var(--accent-silver)] transition-colors"
             >
               {link.name}
             </a>
           ))}
-          {/* Switcher en móvil */}
+
+          <div className="h-px w-12 bg-zinc-800 my-4"></div>
+
           <button
-            onClick={toggleLanguage}
-            className="text-left text-lg font-medium text-[var(--accent-silver)]"
+            onClick={() => {
+              toggleLanguage();
+              setIsMobileMenuOpen(false);
+            }}
+            className="text-[var(--accent-silver)] font-bold tracking-widest uppercase text-sm"
           >
-            {i18n.language === "en" ? "Cambiar a Español" : "Switch to English"}
+            {i18n.language === "en" ? "ESPAÑOL" : "ENGLISH"}
           </button>
+
+          <a
+            href="/cv.pdf"
+            target="_blank"
+            className="mt-4 px-8 py-3 rounded-full border border-[var(--accent-silver)] text-[var(--accent-silver)] font-bold"
+          >
+            Resume
+          </a>
         </div>
-      )}
+      </div>
     </nav>
   );
 }
-
 export default Navbar;
