@@ -18,7 +18,7 @@ const About = () => {
                 <img
                   src="profile.png" // mi foto presentacion
                   alt="David Muñoz"
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out"
+                  className="w-full h-full object-cover grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-700 ease-in-out"
                 />
               </div>
               {/* Borde decorativo detrás de la foto */}
