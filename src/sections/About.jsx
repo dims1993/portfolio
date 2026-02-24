@@ -16,7 +16,7 @@ const About = () => {
               {/* Marco de la foto */}
               <div className="w-64 h-80 md:w-80 md:h-[450px] rounded-[3rem] overflow-hidden border border-white/10 relative z-10 bg-zinc-900">
                 <img
-                  src="/api/placeholder/400/600" // Aqui va mi foto real
+                  src="profile.png" // mi foto presentacion
                   alt="David Muñoz"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out"
                 />
