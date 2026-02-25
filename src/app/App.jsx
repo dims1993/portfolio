@@ -6,18 +6,24 @@ import Stack from "../sections/Stack";
 import Contact from "../sections/Contact";
 import About from "../sections/About";
 import Footer from "../components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/next";
 
 function App() {
   return (
-    <Layout>
-      <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Stack />
-      <Contact />
-      <Footer />
-    </Layout>
+    <>
+      <Layout>
+        <Navbar />
+        <Hero />
+        <About />
+        <Projects />
+        <Stack />
+        <Contact />
+        <Footer />
+      </Layout>
+      <Analytics />
+      <SpeedInsights />
+    </>
   );
 }
 
