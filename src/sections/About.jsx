@@ -17,13 +17,18 @@ const About = () => {
         <div className="relative flex justify-center lg:justify-start">
           <div className="relative group">
             {/* Marco de la foto */}
-            <div className="w-full max-w-[280px] h-80 md:w-80 md:h-[450px] rounded-[3rem] overflow-hidden border border-white/10 relative z-10 bg-zinc-900">
+            <div
+              className="w-full max-w-[280px] h-80 md:w-80 md:h-[450px] rounded-[3rem] overflow-hidden border border-white/10 relative z-10 bg-zinc-900 isolation-auto"
+              style={{
+                WebkitMaskImage: "-webkit-radial-gradient(white, black)",
+              }}
+            >
               <img
                 src={profileImg}
                 alt="David Muñoz"
-                loading="lazy" // Optimización: carga solo cuando llegas aquí
-                decoding="async"
-                className="w-full h-full object-cover grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-700 ease-in-out transform-gpu"
+                loading="eager" // Cámbialo a eager para descartar fallos de lazy load en iOS
+                className="w-full h-full object-cover transition-all duration-700 ease-in-out"
+                // He quitado el grayscale aquí temporalmente para probar
               />
             </div>
             {/* Borde decorativo detrás de la foto */}
