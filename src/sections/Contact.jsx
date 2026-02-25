@@ -43,7 +43,7 @@ const Contact = () => {
             <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[var(--accent-silver)] mb-6">
               {t("contact.badge")}
             </span>
-            <h2 className="text-5xl md:text-6xl font-bold tracking-tighter mb-8">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter mb-8 leading-[1.1]">
               {t("contact.title_main1")} <br />
               <span className="text-zinc-500 italic font-light">
                 {t("contact.title_main2")}
