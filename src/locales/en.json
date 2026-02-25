@@ -6,6 +6,7 @@
     "contact": "Contact"
   },
   "hero": {
+    "title_main": "David Muñoz",
     "subtitle": "Fullstack Developer & UI Enthusiast",
     "description": "Crafting high-performance web applications with a focus on clean code and exceptional user experience.",
     "btn_projects": "Go to Projects",
