@@ -20,8 +20,7 @@ const DATA = {
       },
       github: "https://github.com/dims1993/project-one",
       demo: "https://demo-link.com",
-      image:
-        "https://plus.unsplash.com/premium_photo-1678566111481-8e275550b700?q=80&w=1587&auto=format&fit=crop",
+      image: "/image-project-1.webp",
     },
     {
       id: 2,
@@ -32,8 +31,7 @@ const DATA = {
       },
       github: "https://github.com/dims1993/project-two",
       demo: "https://demo-link.com",
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800",
+      image: "/image-project-2.webp",
     },
   ],
   skills: {

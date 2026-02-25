@@ -13,21 +13,15 @@ function Hero() {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)`,
           backgroundSize: "30px 30px",
-          // Máscara más suave y amplia (de 0% a 70% de la pantalla)
-          maskImage:
-            "radial-gradient(circle at center, black 0%, transparent 70%)",
+          // Usamos una máscara más simple para el móvil
           WebkitMaskImage:
-            "radial-gradient(circle at center, black 0%, transparent 70%)",
+            "radial-gradient(circle at center, black 20%, transparent 80%)",
+          maskImage:
+            "radial-gradient(circle at center, black 20%, transparent 80%)",
         }}
       />
-
-      {/* 2. LUCES DE FONDO (Nebulosas estilo Proyectos) */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[var(--accent-silver)]/10 rounded-full blur-[120px] opacity-50"></div>
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[var(--accent-silver)]/5 rounded-full blur-[120px] opacity-30"></div>
-      </div>
 
       {/* 3. CONTENIDO (Z-10 para estar sobre el fondo) */}
       <div className="relative z-10 flex flex-col items-center max-w-4xl">
@@ -41,7 +35,7 @@ function Hero() {
 
         {/* Name: Estilo Proyectos con degradado y padding para la "g" */}
         <h1
-          className="text-6xl md:text-8xl font-bold tracking-tighter leading-[1.1] bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent py-4 fade-up"
+          className="text-6xl md:text-8xl font-bold tracking-tighter leading-[1.1] bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent py-4 fade-up priority"
           style={{ animationDelay: "0.6s" }}
         >
           {DATA.name.split(" ")[0]} <br />
@@ -50,9 +44,9 @@ function Hero() {
           </span>
         </h1>
 
-        {/* Description centrada correctamente */}
+        {/* Description: Ahora bien centrada y con max-width */}
         <p
-          className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl mx-auto text-center mt-6 leading-relaxed fade-up"
+          className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl mt-6 leading-relaxed fade-up mx-auto"
           style={{ animationDelay: "0.8s" }}
         >
           {t("hero.description")}

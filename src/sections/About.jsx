@@ -16,7 +16,7 @@ const About = () => {
               {/* Marco de la foto */}
               <div className="w-full max-w-[280px] h-80 md:w-80 md:h-[450px] rounded-[3rem] overflow-hidden border border-white/10 relative z-10 bg-zinc-900">
                 <img
-                  src="profile.png" // mi foto presentacion
+                  src="profile.webp" // mi foto presentacion
                   alt="David Muñoz"
                   className="w-full h-full object-cover grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-700 ease-in-out"
                 />
