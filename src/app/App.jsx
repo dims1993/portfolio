@@ -7,7 +7,7 @@ import Contact from "../sections/Contact";
 import About from "../sections/About";
 import Footer from "../components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -21,6 +21,8 @@ function App() {
         <Contact />
         <Footer />
       </Layout>
+
+      {/* Scripts no visuales */}
       <Analytics />
       <SpeedInsights />
     </>
