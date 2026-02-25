@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import SectionIsland from "../components/SectionIsland";
+import profileImg from "../assets/profile.webp";
 
 const About = () => {
   const { t } = useTranslation();
@@ -10,11 +11,7 @@ const About = () => {
       badge="about.badge"
       title="about.title"
       subtitle="about.subtitle"
-      // Si tienes una descripción general en i18n, puedes usar la prop description
     >
-      {/* QUITAMOS: <section>, el fondo negro, el título manual y el badge manual.
-          Todo eso ya lo hace SectionIsland por fuera.
-      */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* COLUMNA IZQUIERDA: Imagen / Foto */}
         <div className="relative flex justify-center lg:justify-start">
@@ -22,7 +19,7 @@ const About = () => {
             {/* Marco de la foto */}
             <div className="w-full max-w-[280px] h-80 md:w-80 md:h-[450px] rounded-[3rem] overflow-hidden border border-white/10 relative z-10 bg-zinc-900">
               <img
-                src="profile.webp"
+                src={profileImg}
                 alt="David Muñoz"
                 loading="lazy" // Optimización: carga solo cuando llegas aquí
                 decoding="async"
