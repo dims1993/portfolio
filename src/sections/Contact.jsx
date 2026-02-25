@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import SectionIsland from "../components/SectionIsland";
 
 const Contact = () => {
   const { t } = useTranslation();
   const [status, setStatus] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
-
     const form = e.target;
     const data = new FormData(form);
 
@@ -15,11 +16,8 @@ const Contact = () => {
       const response = await fetch("https://formspree.io/f/xdaldvly", {
         method: "POST",
         body: data,
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { Accept: "application/json" },
       });
-
       if (response.ok) {
         setStatus("success");
         form.reset();
@@ -32,140 +30,125 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 md:px-10 bg-[#08090a]">
-      {/* CAJA CONTENEDORA (Island Style) */}
-      <div className="max-w-7xl mx-auto relative overflow-hidden rounded-[2.5rem] md:rounded-[2.5rem] border border-white/5 bg-[#111318] py-16 px-8 md:px-20 shadow-2xl">
-        {/* Luz de fondo sutil */}
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[var(--accent-silver)]/5 rounded-full blur-[100px] pointer-events-none"></div>
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* COLUMNA IZQUIERDA: Texto e Info */}
-          <div className="flex flex-col justify-center">
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[var(--accent-silver)] mb-6">
-              {t("contact.badge")}
+    <SectionIsland
+      id="contact"
+      badge="contact.badge"
+      title="contact.title_main1"
+      subtitle="contact.title_main2"
+      description="contact.title_sub"
+      center={true} // <--- ESTO centra solo esta sección
+    >
+      <div className="max-w-3xl mx-auto mt-10">
+        {/* FILA DE CONTACTO (HORIZONTAL Y CENTRADA) */}
+        <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-16">
+          <a
+            href="mailto:dimsepp@gmail.com"
+            className="group flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-[var(--accent-silver)]/30 transition-all duration-300"
+          >
+            <span className="text-xl group-hover:scale-110 transition-transform">
+              ✉
             </span>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter mb-8 leading-[1.1]">
-              {t("contact.title_main1")} <br />
-              <span className="text-zinc-500 italic font-light">
-                {t("contact.title_main2")}
-              </span>
-            </h2>
-            <p className="text-zinc-400 text-lg mb-10 max-w-md font-light">
-              {t("contact.title_sub")}
-            </p>
+            <span className="text-sm font-medium text-zinc-400 group-hover:text-white">
+              dimsepp@gmail.com
+            </span>
+          </a>
 
-            <div className="space-y-6">
-              <div className="flex items-center gap-4 group">
-                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[var(--accent-silver)]/50 transition-colors">
-                  <span className="text-xs">✉</span>
-                </div>
-                <a
-                  href="mailto:dimsepp@gmail.com?subject=Contacto desde Portfolio David"
-                  className="text-zinc-300 hover:text-[var(--accent-silver)] transition-colors duration-300"
-                >
-                  dimsepp@gmail.com
-                </a>
-              </div>
-              <div className="flex items-center gap-4 group">
-                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[var(--accent-silver)]/50 transition-colors">
-                  <span className="text-xs">in</span>
-                </div>
-                <a
-                  href="https://linkedin.com/in/david-muñoz-salinas-735b0b133"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-zinc-300 hover:text-[var(--accent-silver)] transition-colors duration-300 flex items-center gap-2"
-                >
-                  linkedin.com/in/david-muñoz-salinas
-                </a>
-              </div>
-            </div>
-          </div>
+          <a
+            href="https://linkedin.com/in/david-muñoz-salinas-735b0b133"
+            target="_blank"
+            rel="noreferrer"
+            className="group flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-[var(--accent-silver)]/30 transition-all duration-300"
+          >
+            <span className="text-xl group-hover:scale-110 transition-transform">
+              in
+            </span>
+            <span className="text-sm font-medium text-zinc-400 group-hover:text-white">
+              LinkedIn
+            </span>
+          </a>
+        </div>
 
-          {/* COLUMNA DERECHA: El Formulario */}
-          <div className="bg-white/[0.02] border border-white/5 p-8 md:p-10 rounded-[2rem] backdrop-blur-sm relative">
+        {/* FORMULARIO CENTRADO */}
+        <div className="relative">
+          {/* Decoración sutil de fondo para el formulario */}
+          <div className="absolute -inset-4 bg-[var(--accent-silver)]/5 rounded-[3rem] blur-2xl pointer-events-none" />
+
+          <div className="relative bg-[#16181d] border border-white/10 p-8 md:p-12 rounded-[2.5rem] shadow-2xl">
             {status === "success" ? (
-              <div className="flex flex-col items-center justify-center h-full space-y-4 animate-fade-in">
-                <div className="w-16 h-16 bg-[var(--accent-silver)]/10 rounded-full flex items-center justify-center">
-                  <span className="text-2xl text-[var(--accent-silver)]">
-                    ✓
-                  </span>
+              <div className="flex flex-col items-center justify-center py-10 text-center animate-fade-in">
+                <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-6 text-green-500 text-3xl">
+                  ✓
                 </div>
-                <h3 className="text-2xl font-bold">
+                <h3 className="text-2xl font-bold mb-3">
                   {t("contact.success.title")}
                 </h3>
-                <p className="text-zinc-400 text-center">
+                <p className="text-zinc-400 max-w-xs mx-auto">
                   {t("contact.success.message")}
                 </p>
                 <button
                   onClick={() => setStatus("")}
-                  className="text-sm text-[var(--accent-silver)] underline underline-offset-4 mt-4"
+                  className="mt-8 text-xs font-black uppercase tracking-widest text-[var(--accent-silver)] hover:text-white transition-colors"
                 >
                   {t("contact.success.reset_button")}
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 ml-1">
                       {t("contact.name_tag")}
                     </label>
                     <input
                       name="name"
                       required
                       type="text"
-                      placeholder="Jhon Mayer"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[var(--accent-silver)]/50 transition-all"
+                      placeholder="David Muñoz"
+                      className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-4 text-white outline-none focus:border-[var(--accent-silver)]/50 focus:bg-white/[0.06] transition-all"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 ml-1">
                       Email
                     </label>
                     <input
                       name="email"
                       required
                       type="email"
-                      placeholder="jhonmayer@example.com"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[var(--accent-silver)]/50 transition-all"
+                      placeholder="david@example.com"
+                      className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-4 text-white outline-none focus:border-[var(--accent-silver)]/50 focus:bg-white/[0.06] transition-all"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 ml-1">
                     {t("contact.message_tag")}
                   </label>
                   <textarea
                     name="message"
                     required
-                    rows="4"
+                    rows="5"
                     placeholder={t("contact.message_content")}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[var(--accent-silver)]/50 transition-all resize-none"
+                    className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-4 text-white outline-none focus:border-[var(--accent-silver)]/50 focus:bg-white/[0.06] transition-all resize-none"
                   ></textarea>
                 </div>
 
                 <button
                   disabled={status === "sending"}
                   type="submit"
-                  className="w-full py-4 bg-[var(--accent-silver)] text-black font-bold rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.3em] text-xs rounded-2xl hover:bg-[var(--accent-silver)] transform transition-all active:scale-[0.98] shadow-xl disabled:opacity-50"
                 >
                   {status === "sending"
                     ? t("contact.button.sending")
                     : t("contact.button.default")}
                 </button>
-
-                {status === "error" && (
-                  <p className="text-red-400 text-xs text-center mt-2">
-                    {t("contact.error_message")}
-                  </p>
-                )}
               </form>
             )}
           </div>
-        </div>{" "}
+        </div>
       </div>
-    </section>
+    </SectionIsland>
   );
 };
 

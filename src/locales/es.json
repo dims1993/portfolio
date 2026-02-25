@@ -46,9 +46,8 @@
   },
   "stack": {
     "badge": "Stack Tecnológico",
-    "title_main1": "Universo",
-    "title_main2": "Técnico",
-    "title_sub": "Mi ecosistema de desarrollo. Conjunto de herramientas que utilizo para construir software escalable y estéticamente cuidado.",
+    "title": "Universo Técnico",
+    "description": "Mi ecosistema de desarrollo. Conjunto de herramientas que utilizo para construir software escalable y estéticamente cuidado.",
     "utilities": "Utilidades"
   },
   "contact": {

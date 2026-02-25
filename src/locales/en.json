@@ -47,9 +47,8 @@
   },
   "stack": {
     "badge": "Tech Stack",
-    "title_main1": "Technical",
-    "title_main2": "Universe",
-    "title_sub": "My development ecosystem. Set of tools that I use to build scalable and esthetical software.",
+    "title": "Technical Universe",
+    "description": "My development ecosystem. Set of tools that I use to build scalable and esthetical software.",
     "utilities": "Utilities"
   },
   "contact": {

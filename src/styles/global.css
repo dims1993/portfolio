@@ -1,161 +1,68 @@
 @import "tailwindcss";
 
-/* Reseteo para que las secciones ocupen todo el ancho */
-#root {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  max-width: none;
-  text-align: left; /* Muy importante para que no centre todo por defecto */
+/* 1. RESET Y BASE OPTIMIZADA */
+html {
+  scroll-behavior: smooth;
+  background-color: #08090a; /* Fondo base para evitar fogonazos blancos */
 }
 
-html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #08090a; /* El fondo oscuro exterior de las islas */
+  background-color: #08090a;
   color: white;
   overflow-x: hidden;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  -webkit-font-smoothing: antialiased; /* Mejora legibilidad sin coste */
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scroll suave para global y reset */
-
-html {
-  scroll-behavior: smooth;
-  background-color: var(--bg-main); /* Usamos tu variable */
+#root {
+  width: 100%;
 }
-
-/* Para que las secciones no queden pegadas a la Navbar */
-section {
-  scroll-margin-top: 5rem;
-}
-
-/* ===== HERO VISUAL SYSTEM ===== */
-
+/* 2. VARIABLES UNIFICADAS */
 :root {
-  --bg-main: #0f1115;
-  --text-main: #ffffff;
-  --text-primary: #ffffff;
-  --text-secondary: #c0c0c0;
-  --text-soft: #9ca3af;
-  --accent-blue: #2563eb;
-  --accent-hover: #1e40af;
   --accent-silver: #e2e8f0;
+  --text-soft: #9ca3af;
+  --green-status: #22c55e;
 }
 
-/* Background base */
-.hero-section {
-  position: relative;
-  min-height: 100vh;
-  background: var(--bg-dark);
-  color: var(--text-main);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-  padding: 2rem;
-}
-
-/* Grid overlay */
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-}
-
-/* Glow effect */
+/* 3. SISTEMA VISUAL DEL HERO (Limpiado de efectos pesados) */
 .hero-glow {
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: min(600px, 90vw); /* No más grande que la pantalla */
+  height: min(600px, 90vw);
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.25) 0%,
-    transparent 70%
+    rgba(255, 255, 255, 0.15) 0%,
+    /* Bajamos opacidad */ transparent 70%
   );
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  filter: blur(120px);
+  filter: blur(60px); /* Bajamos de 120px a 60px: ahorro masivo de GPU */
   pointer-events: none;
+  will-change: transform; /* Prepara a la GPU */
 }
 
-/* Typography */
-
-body {
-  font-family: "Plus Jakarta Sans", sans-serif;
+/* 4. ANIMACIONES OPTIMIZADAS (Evitamos animar Layout) */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px); /* Reducimos distancia para suavidad */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.hero-tag {
-  font-size: 0.9rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-soft);
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero-title {
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 600;
-  line-height: 1.05;
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  margin-top: 1rem;
-  color: var(--text-soft);
-}
-
-.hero-desc {
-  margin-top: 1.5rem;
-  max-width: 650px;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: var(--text-soft);
-}
-
-/* Buttons */
-.hero-cta {
-  margin-top: 2.5rem;
-  display: flex;
-  gap: 1.2rem;
-}
-
-.btn-primary {
-  background: white;
-  color: #000;
-  padding: 0.85rem 2rem;
-  border-radius: 12px; /* Más redondeado, como tus nuevas 'islas' */
-  font-weight: 600;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.btn-primary:hover {
-  background: #e4e4e7;
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
-  color: white;
-  padding: 0.85rem 2rem;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
-}
-
-.btn-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.4);
-}
-
-/* Status badge */
+/* Status badge y Punto */
 .status-badge {
   margin-top: 2rem;
   display: flex;
@@ -168,9 +75,19 @@ body {
 .status-dot {
   width: 8px;
   height: 8px;
-  background: var(--green);
+  background: var(--green-status);
   border-radius: 50%;
-  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+  position: relative; /* Necesario para el anillo */
+}
+
+/* El anillo que late (usa la GPU, no el box-shadow) */
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--green-status);
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
 }
 
 @keyframes pulse {
@@ -183,43 +100,4 @@ body {
   100% {
     box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
   }
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  background: #22c55e;
-  border-radius: 50%;
-  animation: pulse 2s infinite ease-in-out;
-}
-
-/* Animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-up {
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.animate-fade-in {
-  animation: fadeIn 0.5s ease forwards;
 }
