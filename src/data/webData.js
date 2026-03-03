@@ -15,12 +15,12 @@ const DATA = {
       id: 1,
       key: "project1", // Usaremos esto para traducir
       stack: {
-        backend: ["Python", "Django", "PostgreSQL"],
-        frontend: ["React", "Tailwind CSS"],
+        backend: ["Python", "FastApi", "PostgreSQL", "Docker"],
+        frontend: ["JavaScript", "React", "Vite", "Tailwind CSS"],
       },
-      github: "https://github.com/dims1993/project-one",
-      demo: "https://demo-link.com",
-      image: "/image-project-1.webp",
+      github: "https://github.com/dims1993/beautydesk-taskmanager",
+      demo: "https://beautydesk-taskmanager.vercel.app",
+      image: "/image-project-1.png",
     },
     {
       id: 2,

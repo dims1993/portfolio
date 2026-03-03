@@ -36,8 +36,8 @@
     "title_sub": "Los proyectos con propósito generan crecimiento real",
     "section_title": "Proyectos Seleccionados",
     "project1": {
-      "title": "Proyecto Modelo Uno",
-      "desc": "Aplicación fullstack desarrollada con Python y Django. Incluye una API RESTful, autenticación con JWT y una base de datos PostgreSQL para seguimiento en tiempo real."
+      "title": "BeautyTask Manager",
+      "desc": "Sistema de gestión Full-Stack para salones de belleza desarrollado con React y Vite. Cuenta con una arquitectura robusta basada en FastAPI y PostgreSQL, incluyendo una agenda inteligente con detección de colisiones, gestión de clientes y notificaciones automáticas."
     },
     "project2": {
       "title": "Proyecto Modelo Dos",

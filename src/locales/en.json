@@ -37,8 +37,8 @@
     "title_sub": "Projects with purpose create real growth",
     "section_title": "Selected Projects",
     "project1": {
-      "title": "Model Project One",
-      "desc": "Fullstack application built with Python and Django. Features a RESTful API, JWT authentication, and a PostgreSQL database for real-time tracking."
+      "title": "BeautyTask Manager",
+      "desc": "Full-Stack salon management system built with React and Vite. It features a robust architecture using FastAPI and PostgreSQL, including an intelligent scheduling system with collision detection, client management, and automated notifications."
     },
     "project2": {
       "title": "Model Project Two",
