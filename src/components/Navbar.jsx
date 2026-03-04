@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next"; // Paso 1: Importar el hook
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
-  const { t, i18n } = useTranslation(); // Paso 2: Inicializar el traductor
+  const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Variable dinámica para el archivo del CV según el idioma
+  const resumeHref = i18n.language === "es" ? "/cv-es.pdf" : "/cv-en.pdf";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,8 +17,6 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Paso 3: Usar t() para los nombres.
-  // Asegúrate de que estas claves existan en tus archivos locales (en.json y es.json)
   const navLinks = [
     { name: t("nav.about"), href: "#about" },
     { name: t("nav.projects"), href: "#projects" },
@@ -23,7 +24,6 @@ function Navbar() {
     { name: t("nav.contact"), href: "#contact" },
   ];
 
-  // Función para alternar idioma
   const toggleLanguage = () => {
     const newLang = i18n.language === "en" ? "es" : "en";
     i18n.changeLanguage(newLang);
@@ -50,7 +50,7 @@ function Navbar() {
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
-              key={link.href} // Usamos href como key porque el name ahora cambia con el idioma
+              key={link.href}
               href={link.href}
               className="text-xs uppercase tracking-widest font-medium text-zinc-400 hover:text-white transition-colors"
             >
@@ -66,12 +66,14 @@ function Navbar() {
             {i18n.language === "en" ? "ESP" : "ENG"}
           </button>
 
+          {/* Botón Resume Único (Escritorio) */}
           <a
-            href="/cv.pdf"
+            href={resumeHref}
             target="_blank"
+            rel="noopener noreferrer"
             className="px-5 py-2 rounded-full border border-[var(--accent-silver)] text-[var(--accent-silver)] text-sm font-semibold hover:bg-[var(--accent-silver)] hover:text-black transition-all duration-300"
           >
-            Resume
+            {t("nav.resume")}
           </a>
         </div>
 
@@ -79,7 +81,6 @@ function Navbar() {
         <button
           className="md:hidden z-[110] p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle Menu"
         >
           <div className="w-6 h-5 relative flex flex-col justify-between">
             <span
@@ -97,12 +98,8 @@ function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-black transition-all duration-500 ease-in-out md:hidden ${
-          isMobileMenuOpen
-            ? "opacity-100 visible"
-            : "opacity-0 invisible shadow-none"
-        }`}
-        style={{ top: "0", height: "100vh" }}
+        className={`fixed inset-0 bg-black transition-all duration-500 ease-in-out md:hidden ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
+        style={{ height: "100vh" }}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8">
           {navLinks.map((link) => (
@@ -128,12 +125,16 @@ function Navbar() {
             {i18n.language === "en" ? "ESPAÑOL" : "ENGLISH"}
           </button>
 
+          {/* Botón Resume Único (Móvil) */}
           <a
-            href="/cv.pdf"
+            href={resumeHref}
+            download
             target="_blank"
-            className="mt-4 px-8 py-3 rounded-full border border-[var(--accent-silver)] text-[var(--accent-silver)] font-bold"
+            rel="noopener noreferrer"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="mt-4 px-8 py-3 rounded-full border border-[var(--accent-silver)] text-[var(--accent-silver)] font-bold uppercase tracking-widest text-xs"
           >
-            Resume
+            {t("nav.resume")}
           </a>
         </div>
       </div>
