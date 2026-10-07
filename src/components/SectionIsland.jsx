@@ -1,5 +1,6 @@
 // src/components/SectionIsland.jsx
 import { useTranslation } from "react-i18next";
+import AnimatedDescription from "./AnimatedDescription";
 
 const SectionIsland = ({
   id,
@@ -42,11 +43,10 @@ const SectionIsland = ({
             </h2>
 
             {description && (
-              <p
+              <AnimatedDescription
+                text={t(description)}
                 className={`mt-6 text-zinc-400 text-lg font-light leading-relaxed max-w-2xl ${center ? "mx-auto" : ""}`}
-              >
-                {t(description)}
-              </p>
+              />
             )}
           </div>
 

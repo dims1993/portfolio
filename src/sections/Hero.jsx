@@ -1,27 +1,162 @@
 import DATA from "../data/webData";
 import { useTranslation } from "react-i18next";
+import { useEffect, useRef } from "react";
+import AnimatedDescription from "../components/AnimatedDescription";
+
+const HEX_SIZE = 30;
+const TRAIL_DURATION = 800;
+
+function HexagonBackground() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const section = canvas?.parentElement;
+
+    if (!canvas || !section) {
+      return undefined;
+    }
+
+    const context = canvas.getContext("2d");
+    const pointer = { x: -Infinity, y: -Infinity };
+    const trailMap = new Map();
+    const supportsHover = window.matchMedia("(hover: hover)").matches;
+    let animationFrame;
+    let isAnimating = false;
+    let width = 0;
+    let height = 0;
+    let pixelRatio = 1;
+
+    const resize = () => {
+      const bounds = section.getBoundingClientRect();
+      pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      width = bounds.width;
+      height = bounds.height;
+      canvas.width = Math.round(width * pixelRatio);
+      canvas.height = Math.round(height * pixelRatio);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      draw();
+    };
+
+    const movePointer = (event) => {
+      const bounds = section.getBoundingClientRect();
+      pointer.x = event.clientX - bounds.left;
+      pointer.y = event.clientY - bounds.top;
+      if (!isAnimating) {
+        isAnimating = true;
+        animationFrame = window.requestAnimationFrame(render);
+      }
+    };
+
+    const resetPointer = () => {
+      pointer.x = -Infinity;
+      pointer.y = -Infinity;
+    };
+
+    const drawHexagon = (x, y, opacity, active) => {
+      context.beginPath();
+      for (let index = 0; index < 6; index += 1) {
+        const angle = (Math.PI / 180) * (60 * index - 30);
+        const pointX = x + HEX_SIZE * Math.cos(angle);
+        const pointY = y + HEX_SIZE * Math.sin(angle);
+        if (index === 0) context.moveTo(pointX, pointY);
+        else context.lineTo(pointX, pointY);
+      }
+      context.closePath();
+      context.strokeStyle = active
+        ? `rgba(203, 213, 225, ${opacity})`
+        : `rgba(255, 255, 255, ${opacity})`;
+      context.lineWidth = active ? 1.15 : 0.65;
+      context.stroke();
+    };
+
+    const draw = (timestamp = 0) => {
+      context.clearRect(0, 0, width, height);
+      const horizontalDistance = HEX_SIZE * Math.sqrt(3);
+      const verticalDistance = HEX_SIZE * 1.5;
+
+      for (let row = -1; row <= height / verticalDistance + 1; row += 1) {
+        const y = row * verticalDistance;
+        const offset = row % 2 === 0 ? 0 : horizontalDistance / 2;
+
+        for (
+          let column = -1;
+          column <= width / horizontalDistance + 1;
+          column += 1
+        ) {
+          const x = column * horizontalDistance + offset;
+          const distance = Math.hypot(x - pointer.x, y - pointer.y);
+          const influence = Math.max(0, 1 - distance / 135);
+          const cellId = `${row}:${column}`;
+          const trail =
+            influence > 0 ? timestamp + TRAIL_DURATION * influence : 0;
+          const storedTrail = Math.max(trailMap.get(cellId) || 0, trail);
+
+          if (storedTrail > timestamp) {
+            trailMap.set(cellId, storedTrail);
+          } else {
+            trailMap.delete(cellId);
+          }
+
+          const remaining = Math.max(
+            0,
+            (storedTrail - timestamp) / TRAIL_DURATION,
+          );
+          const active = influence > 0 || remaining > 0;
+          drawHexagon(x, y, active ? 0.035 + remaining * 0.26 : 0.045, active);
+        }
+      }
+    };
+
+    const render = (timestamp) => {
+      draw(timestamp);
+      resetPointer();
+      if (trailMap.size > 0) {
+        animationFrame = window.requestAnimationFrame(render);
+      } else {
+        isAnimating = false;
+      }
+    };
+
+    resize();
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(section);
+    if (supportsHover) {
+      section.addEventListener("pointermove", movePointer, { passive: true });
+      section.addEventListener("pointerleave", resetPointer);
+    }
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      resizeObserver.disconnect();
+      if (supportsHover) {
+        section.removeEventListener("pointermove", movePointer);
+        section.removeEventListener("pointerleave", resetPointer);
+      }
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 z-0 pointer-events-none"
+      aria-hidden="true"
+    />
+  );
+}
 
 function Hero() {
   const { t } = useTranslation();
+  const description = t("hero.description");
 
   return (
     <section
       id="hero"
       className="relative min-h-screen w-full bg-[#050505] flex flex-col justify-center items-center overflow-hidden px-6 text-center"
     >
-      {/* 1. EL GRID: Ajustado para que se vea más natural */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)`,
-          backgroundSize: "30px 30px",
-          // Usamos una máscara más simple para el móvil
-          WebkitMaskImage:
-            "radial-gradient(circle at center, black 20%, transparent 80%)",
-          maskImage:
-            "radial-gradient(circle at center, black 20%, transparent 80%)",
-        }}
-      />
+      <HexagonBackground />
 
       {/* 3. CONTENIDO (Z-10 para estar sobre el fondo) */}
       <div className="relative z-10 flex flex-col items-center max-w-4xl">
@@ -44,13 +179,14 @@ function Hero() {
           </span>
         </h1>
 
-        {/* Description: Ahora bien centrada y con max-width */}
-        <p
-          className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl mt-6 leading-relaxed fade-up mx-auto"
-          style={{ animationDelay: "0.8s" }}
-        >
-          {t("hero.description")}
-        </p>
+        {/* Description */}
+        <AnimatedDescription
+          text={description}
+          className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl mt-6 leading-relaxed mx-auto"
+          delay={0.3}
+          animateOnView={false}
+          isActive={true}
+        />
 
         {/* CTA Buttons */}
         <div

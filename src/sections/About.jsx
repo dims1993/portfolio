@@ -1,9 +1,71 @@
 import { useTranslation } from "react-i18next";
+import { useEffect, useRef, useState } from "react";
 import SectionIsland from "../components/SectionIsland";
 import profileImg from "../assets/profile.webp";
+import AnimatedDescription, {
+  ANIMATION_DURATION,
+  CHARACTER_DELAY,
+} from "../components/AnimatedDescription";
 
 const About = () => {
   const { t } = useTranslation();
+  const descriptionRef = useRef(null);
+  const [showDescriptionAnimation, setShowDescriptionAnimation] =
+    useState(false);
+  const paragraphs = [
+    [
+      { text: `${t("about.p1_intro")} ` },
+      { text: t("about.p1_name"), className: "text-white font-medium" },
+      { text: `${t("about.p1_rest")} ` },
+      { text: t("about.p1_focus"), className: "text-white" },
+      { text: t("about.p1_end") },
+    ],
+    [
+      { text: `${t("about.p2_intro")} ` },
+      { text: t("about.p2_bold"), className: "font-medium text-white" },
+      { text: t("about.p2_end") },
+    ],
+    [
+      { text: `${t("about.p3_intro")} ` },
+      {
+        text: t("about.p3_bold"),
+        className: "text-[var(--accent-silver)] font-medium",
+      },
+      { text: t("about.p3_end") },
+    ],
+  ];
+  const paragraphText = paragraphs.map((parts) =>
+    parts.map(({ text }) => text).join(""),
+  );
+  const paragraphDelays = paragraphText.reduce((delays, text, index) => {
+    if (index === 0) return [0];
+
+    const previousLength = paragraphText[index - 1].length;
+    const previousEnd =
+      delays[index - 1] +
+      (previousLength - 1) * CHARACTER_DELAY +
+      ANIMATION_DURATION;
+
+    return [...delays, previousEnd];
+  }, []);
+
+  useEffect(() => {
+    const description = descriptionRef.current;
+    if (!description) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowDescriptionAnimation(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(description);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <SectionIsland
@@ -12,7 +74,10 @@ const About = () => {
       title="about.title"
       subtitle="about.subtitle"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div
+        ref={descriptionRef}
+        className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+      >
         {/* COLUMNA IZQUIERDA: Imagen / Foto */}
         <div className="relative flex justify-center lg:justify-start">
           <div className="relative group">
@@ -39,31 +104,26 @@ const About = () => {
         {/* COLUMNA DERECHA: Párrafos de texto */}
         <div className="flex flex-col">
           <div className="space-y-6 text-zinc-400 text-lg font-light leading-relaxed">
-            <p>
-              {t("about.p1_intro")}{" "}
-              <span className="text-white font-medium">
-                {t("about.p1_name")}
-              </span>
-              {t("about.p1_rest")}{" "}
-              <span className="text-white">{t("about.p1_focus")}</span>
-              {t("about.p1_end")}
-            </p>
+            <AnimatedDescription
+              parts={paragraphs[0]}
+              delay={paragraphDelays[0]}
+              animateOnView={false}
+              isActive={showDescriptionAnimation}
+            />
 
-            <p>
-              {t("about.p2_intro")}{" "}
-              <strong className="font-medium text-white">
-                {t("about.p2_bold")}
-              </strong>
-              {t("about.p2_end")}
-            </p>
+            <AnimatedDescription
+              parts={paragraphs[1]}
+              delay={paragraphDelays[1]}
+              animateOnView={false}
+              isActive={showDescriptionAnimation}
+            />
 
-            <p>
-              {t("about.p3_intro")}{" "}
-              <span className="text-[var(--accent-silver)] font-medium">
-                {t("about.p3_bold")}
-              </span>
-              {t("about.p3_end")}
-            </p>
+            <AnimatedDescription
+              parts={paragraphs[2]}
+              delay={paragraphDelays[2]}
+              animateOnView={false}
+              isActive={showDescriptionAnimation}
+            />
           </div>
 
           {/* Tarjetas de información rápida */}

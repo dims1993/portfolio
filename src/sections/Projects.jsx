@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import DATA from "../data/webData";
 import ProjectCard from "../components/ProjectCard";
+import AnimatedDescription from "../components/AnimatedDescription";
 
 function Projects() {
   const { t } = useTranslation();
@@ -37,9 +38,10 @@ function Projects() {
           <h2 className="text-5xl md:text-8xl font-bold tracking-tighter mb-8 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent py-2 leading-[1.15]">
             {t("projects.title_main")}
           </h2>
-          <p className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
-            {t("projects.title_sub")}
-          </p>
+          <AnimatedDescription
+            text={t("projects.title_sub")}
+            className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed"
+          />
         </div>
 
         {/* Grid de proyectos corregido */}
