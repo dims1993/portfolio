@@ -22,12 +22,12 @@
     "p1_name": "David Muñoz",
     "p1_rest": ", a developer with an analytical mind and a creative soul. My main focus is the",
     "p1_focus": "Fullstack",
-    "p1_end": "ecosystem, where I enjoy bridging robust architectures with intuitive interfaces.",
+    "p1_end": " ecosystem, where I enjoy bridging robust architectures with intuitive interfaces.",
     "p2_intro": "My technical background allows me to tackle complex problems with scalable solutions, always keeping a critical eye on",
     "p2_bold": "design and usability",
     "p2_end": ". I firmly believe that code should not only work, but it should be elegant and maintainable.",
     "p3_intro": "Currently, I am focusing on honing my skills in",
-    "p3_bold": "Python and React",
+    "p3_bold": "JavaScript and React",
     "p3_end": ", constantly exploring new ways to optimize workflow and the end-user experience.",
     "location": "Location",
     "interests": "Interests"
@@ -42,8 +42,8 @@
       "desc": "Full-Stack salon management system built with React and Vite. It features a robust architecture using FastAPI and PostgreSQL, including an intelligent scheduling system with collision detection, client management, and automated notifications."
     },
     "project2": {
-      "title": "Model Project Two",
-      "desc": "A high-performance dashboard focused on data visualization. Optimized for speed and responsiveness using asynchronous JavaScript and modern CSS architectures."
+      "title": "VideoMaker",
+      "desc": "An AI-powered video production dashboard that automates the creation of YouTube content from idea to final render. Built for speed and scalability, it streamlines script generation, scene planning, image prompts, voiceover, subtitles, thumbnails, and metadata through a modern responsive workflow."
     }
   },
   "stack": {

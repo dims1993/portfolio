@@ -2,12 +2,8 @@
 
 function Layout({ children }) {
   return (
-    <div className="min-h-screen bg-[#0B0B0F] text-white">
-      <div className="max-w-6xl mx-auto px-6">
-        {children}
-      </div>
-    </div>
-  )
+    <div className="min-h-screen bg-[#000000] text-white">{children}</div>
+  );
 }
 
-export default Layout
+export default Layout;

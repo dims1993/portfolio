@@ -26,7 +26,7 @@
     "p2_bold": "diseño y la usabilidad",
     "p2_end": ". Creo firmemente que el código no solo debe funcionar, sino que debe ser elegante y fácil de mantener.",
     "p3_intro": "Actualmente, me centro en perfeccionar mis habilidades en",
-    "p3_bold": "Python y React",
+    "p3_bold": "JavaScript y React",
     "p3_end": ", explorando constantemente nuevas formas de optimizar el flujo de trabajo y la experiencia del usuario final.",
     "location": "Ubicación",
     "interests": "Intereses"
@@ -41,8 +41,8 @@
       "desc": "Sistema de gestión Full-Stack para salones de belleza desarrollado con React y Vite. Cuenta con una arquitectura robusta basada en FastAPI y PostgreSQL, incluyendo una agenda inteligente con detección de colisiones, gestión de clientes y notificaciones automáticas."
     },
     "project2": {
-      "title": "Proyecto Modelo Dos",
-      "desc": "Panel de alto rendimiento enfocado en la visualización de datos. Optimizado para velocidad y capacidad de respuesta utilizando JavaScript asíncrono y arquitecturas modernas de CSS."
+      "title": "VideoMaker",
+      "desc": "Un dashboard de producción de vídeo con IA que automatiza la creación de contenido para YouTube desde la idea inicial hasta el render final. Optimizado para velocidad, escalabilidad y un flujo de trabajo creativo más eficiente."
     }
   },
   "stack": {

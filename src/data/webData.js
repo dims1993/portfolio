@@ -26,8 +26,8 @@ const DATA = {
       id: 2,
       key: "project2",
       stack: {
-        backend: ["Node.js", "Express"],
-        frontend: ["React", "Chart.js", "Tailwind"],
+        backend: ["Node.js", "Prisma", "PostgreSQL", "FFmpeg", "AI APIs"],
+        frontend: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       },
       github: "https://github.com/dims1993/project-two",
       demo: "https://demo-link.com",
@@ -36,7 +36,17 @@ const DATA = {
   ],
   skills: {
     frontend: ["React", "JavaScript (ES6+)", "Tailwind CSS", "HTML5/CSS3"],
-    tools: ["Git", "Vite", "Figma", "Postman"],
+    tools: [
+      "Git",
+      "GitHub",
+      "REST APIs",
+      "FFmpeg",
+      "AI APIS",
+      "Vite",
+      "Figma",
+      "Postman",
+      "Docker",
+    ],
   },
 };
 

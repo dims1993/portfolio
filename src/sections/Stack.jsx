@@ -37,7 +37,7 @@ const Stack = () => {
             Core Stack
           </span>
           <div className="flex flex-wrap gap-4">
-            {["Python", "Django", "PostgreSQL", "Node.js"].map((skill) => (
+            {["Node.js", "Express", "TypeScript", "PostgreSQL"].map((skill) => (
               <div
                 key={skill}
                 className="px-8 py-4 bg-white/[0.03] border border-[var(--accent-silver)]/20 rounded-2xl hover:scale-105 hover:border-[var(--accent-silver)]/50 transition-all duration-300 group transform-gpu"

@@ -1,10 +1,10 @@
- # Personal Portfolio
+# Personal Portfolio
 
 This is my professional portfolio website, designed to showcase my journey as a developer, my technical skills, and the projects I've built. It is a fast, responsive, and SEO-optimized web application.
 
 ## Live Demo
 
-You can explore the live version here: [portfolio-dims1993.vercel.app](https://portfolio-dims1993s-projects.vercel.app)
+You can explore the live version here: git clone https://github.com/dims1993/portfolio.git
 
 ---
 

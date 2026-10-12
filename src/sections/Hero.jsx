@@ -154,7 +154,7 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full bg-[#050505] flex flex-col justify-center items-center overflow-hidden px-6 text-center"
+      className="relative min-h-screen w-full bg-[#000000] flex flex-col justify-center items-center overflow-hidden px-6 text-center"
     >
       <HexagonBackground />
 
