@@ -15,7 +15,7 @@ const Footer = () => {
         {/* Lado Derecho: Social Rings */}
         <div className="flex gap-4">
           <a
-            href="https://linkedin.com/in/david-muñoz-salinas-735b0b133"
+            href="https://linkedin.com/in/david-israel-muñoz-salinas-735b0b133"
             target="_blank"
             className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-[var(--accent-silver)] hover:bg-white/5 transition-all group"
           >

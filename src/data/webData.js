@@ -6,7 +6,7 @@ const DATA = {
     { name: "GitHub", url: "https://github.com/dims1993", icon: "github" },
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/david-muñoz-salinas-735b0b133",
+      url: "https://www.linkedin.com/in/david-israel-muñoz-salinas-735b0b133",
       icon: "linkedin",
     },
   ],

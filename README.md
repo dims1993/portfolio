@@ -72,7 +72,7 @@ portfolio/
 
 ## Contact & Connect
 
-LinkedIn: [www.linkedin.com/in/david-muñoz-salinas-735b0b133]
+LinkedIn: [www.linkedin.com/in/david-israel-muñoz-salinas-735b0b133]
 
 Email: [dimsepp@gmail.com]
 

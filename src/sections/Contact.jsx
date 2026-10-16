@@ -54,7 +54,7 @@ const Contact = () => {
           </a>
 
           <a
-            href="https://linkedin.com/in/david-muñoz-salinas-735b0b133"
+            href="https://linkedin.com/in/david-israel-muñoz-salinas-735b0b133"
             target="_blank"
             rel="noreferrer"
             className="group flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-[var(--accent-silver)]/30 transition-all duration-300"
